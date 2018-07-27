@@ -3,21 +3,17 @@ import WebKit
 import PlaygroundSupport
 import Hype
 
-/*:
- The actual https://matthewramsden.com website.
- */
+// ========================================
+//
+// -----------matthewramsden.com-----------
+//
+// ========================================
 
-//==================
-//------------------
-//matthewramsden.com
-//------------------
-//==================
-
-//==================
-//------------------
-//----Operators-----
-//------------------
-//==================
+// ========================================
+//
+// ---------------Operators----------------
+//
+// ========================================
 
 precedencegroup ForwardApplication {
     associativity: left
@@ -44,11 +40,11 @@ func >>> <A, B, C>(_ lhs: @escaping (A) -> B, _ rhs: @escaping (B) -> C) -> (A) 
     return { rhs(lhs($0)) }
 }
 
-//==================
-//------------------
-//------Models------
-//------------------
-//==================
+// ========================================
+//
+// ----------------Models------------------
+//
+// ========================================
 
 struct Link {
     let text: String
@@ -71,6 +67,8 @@ let linkComponent2: Component<Link> = { link in
         |> attributeDecorator([.href(url: link.url)])
         |> attributeDecorator([.class(value: "link")])
 }
+
+// App
 
 struct App {
     let link: Link
@@ -102,6 +100,7 @@ let appComponent: Component<App> = { app in
 
 let appsComponent = listComponent <| appComponent
 
+// Dev
 
 struct Developer {
     let link: Link
@@ -127,14 +126,11 @@ let devComponent: Component<Developer> = { dev in
 
 let devsComponent = listComponent <| devComponent
 
-
-render(
-    appsComponent(apps)
-)
-
-render(
-    devsComponent(devs)
-)
+// ========================================
+//
+// --------------Playground----------------
+//
+// ========================================
 
 let webView = WKWebView(frame: CGRect(x: 0, y: 0, width: 700/1.5, height: 1000/1.5))
 webView.loadHTMLString(render(appsComponent(apps)), baseURL: nil)
