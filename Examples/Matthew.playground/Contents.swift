@@ -4,24 +4,25 @@ import PlaygroundSupport
 import Hype
 
 /*:
- The actual https://nashvilleswift.org website.
+ The actual https://matthewramsden.com website.
  */
 
 let dom = html {
     body {
         pre("""
-        Nashville Swift Language Group
-        https://www.meetup.com/Nashville-Swift-Language-Meetup/
+        MMA Workout
+        Available for iPhone and Apple Watch.
 
-        6pm - 8pm
-        2nd Thursday of every month
+        MMA Bible
+        Available for iPhone and Apple Watch.
 
-        HCA Building 4
-        2555 Park Plaza, Nashville TN. 37203
+        Matthew Ramsden
+        Matthew designs and develops iOS apps.
+        Github
         """)
     }
 }
 
-let webView = WKWebView(frame: CGRect(x: 0, y: 0, width: 700, height: 1000))
+let webView = WKWebView(frame: CGRect(x: 0, y: 0, width: 700/1.5, height: 1000/1.5))
 webView.loadHTMLString(render(dom), baseURL: nil)
 PlaygroundPage.current.liveView = webView
