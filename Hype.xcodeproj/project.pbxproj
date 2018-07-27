@@ -60,6 +60,7 @@
 		8EF8D0829C7A79D042B069B3 /* Pods-HypeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HypeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HypeTests/Pods-HypeTests.release.xcconfig"; sourceTree = "<group>"; };
 		9C229E939B4E40246C91EC89 /* Pods_Hype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E4BA964B4D0C3D1BE3C8ED /* Pods-HypeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HypeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HypeTests/Pods-HypeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AEFB9AC0210BBBDA0060C2A4 /* Matthew.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Matthew.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B25AA384B6E4DD18320C736B /* Pods-Hype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hype.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hype/Pods-Hype.debug.xcconfig"; sourceTree = "<group>"; };
 		CA0B5DA55521348A4BB2B53D /* Pods_HypeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HypeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -157,6 +158,7 @@
 		7872933E20E80CEE00CCE01B /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				AEFB9AC0210BBBDA0060C2A4 /* Matthew.playground */,
 				7872933F20E80CEE00CCE01B /* NashvilleSwift.playground */,
 				782FF86520E9D8CC00E93F3C /* Styling.playground */,
 				7870ADF220EC6E4E00150F7F /* Components.playground */,
