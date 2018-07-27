@@ -7,11 +7,17 @@ import Hype
  The actual https://matthewramsden.com website.
  */
 
-//=================
-//-----------------
-//---Operators-----
-//-----------------
-//=================
+//==================
+//------------------
+//matthewramsden.com
+//------------------
+//==================
+
+//==================
+//------------------
+//----Operators-----
+//------------------
+//==================
 
 precedencegroup ForwardApplication {
     associativity: left
@@ -38,19 +44,11 @@ func >>> <A, B, C>(_ lhs: @escaping (A) -> B, _ rhs: @escaping (B) -> C) -> (A) 
     return { rhs(lhs($0)) }
 }
 
-/*:
- ## Models
- */
-
-struct Post {
-    let title: String
-    let content: String
-}
-
-let posts = [
-    Post(title: "Hello world", content: "My first post."),
-    Post(title: "Server Side Swift", content: "Swift is pretty neat!")
-]
+//==================
+//------------------
+//------Models------
+//------------------
+//==================
 
 struct Link {
     let text: String
@@ -61,6 +59,18 @@ let links = [
     Link(text: "First Link", url: "https://blah1"),
     Link(text: "Second Link", url: "https://blah2")
 ]
+
+let linkAD = { url in
+    return attributeDecorator([
+        .href(url: url)
+        ])
+}
+
+let linkComponent2: Component<Link> = { link in
+    a(link.text)
+        |> attributeDecorator([.href(url: link.url)])
+        |> attributeDecorator([.class(value: "link")])
+}
 
 struct App {
     let link: Link
@@ -82,18 +92,6 @@ let mmaBible = App(
 
 let apps = [mmaWorkout, mmaBible]
 
-let linkAD = { url in
-    return attributeDecorator([
-        .href(url: url)
-        ])
-}
-
-let linkComponent2: Component<Link> = { link in
-    a(link.text)
-        |> attributeDecorator([.href(url: link.url)])
-        |> attributeDecorator([.class(value: "link")])
-}
-
 let appComponent: Component<App> = { app in
     div {
         h3(app.name) +
@@ -104,32 +102,40 @@ let appComponent: Component<App> = { app in
 
 let appsComponent = listComponent <| appComponent
 
-render(
-    linkAD("http://") <| a("test")
+
+struct Developer {
+    let link: Link
+    let name: String
+    let desc: String
+}
+
+let matthew = Developer(link: Link(text: "github",
+                                   url: "github.com/lllovesmatt"),
+                        name: "Matthew Ramsden",
+                        desc: "Matthew designs and develops iOS apps."
 )
+
+let devs = [matthew]
+
+let devComponent: Component<Developer> = { dev in
+    div {
+        h4(dev.name) +
+        p(dev.desc) +
+        linkComponent2(dev.link)
+    }
+}
+
+let devsComponent = listComponent <| devComponent
+
 
 render(
     appsComponent(apps)
 )
 
-
-//let dom = html {
-//    body {
-//        pre("""
-//        MMA Workout
-//        Available for iPhone and Apple Watch.
-//
-//        MMA Bible
-//        Available for iPhone and Apple Watch.
-//
-//        Matthew Ramsden
-//        Matthew designs and develops iOS apps.
-//        Github
-//        """)
-//    }
-//}
+render(
+    devsComponent(devs)
+)
 
 let webView = WKWebView(frame: CGRect(x: 0, y: 0, width: 700/1.5, height: 1000/1.5))
-//webView.loadHTMLString(render(dom), baseURL: nil)
 webView.loadHTMLString(render(appsComponent(apps)), baseURL: nil)
 PlaygroundPage.current.liveView = webView
