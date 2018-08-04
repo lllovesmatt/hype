@@ -126,6 +126,8 @@ let devComponent: Component<Developer> = { dev in
 
 let devsComponent = listComponent <| devComponent
 
+// TODO: get devComponent and appComponent together
+
 // ========================================
 //
 // --------------Playground----------------
